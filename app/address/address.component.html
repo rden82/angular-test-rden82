@@ -1,0 +1,44 @@
+<div class="title-box">
+  <div class="right">
+    <i class="fa fa-minus" aria-hidden="true"></i>
+    <i class="fa fa-chevron-down" aria-hidden="true"></i>
+    <i class="fa fa-list" aria-hidden="true"></i>
+  </div>
+  <h2>Перечень объектов</h2>
+</div>
+
+<div class="search-location">
+  <form action="" (submit)="autocomplete(searchKeywords)">
+    <i class="fa fa-map-marker" aria-hidden="true"></i>
+    <span class="field-box">
+      <i class="fa fa-search" aria-hidden="true"></i>
+      <input #searchKeywords (focusout)="autocomplete(searchKeywords)" type="text" placeholder="Поиск" />
+    </span>
+    <button class="reset right" type="reset" (click)="searchReset()"><i class="fa fa-times" aria-hidden="true"></i></button>
+  </form>
+</div>
+
+<div class="selected-block">
+  <span class="selected-block__title small">Выбранные объекты:</span>
+  <div class="right upper cancel">Отменить все <i class="fa fa-times" aria-hidden="true"></i></div>
+  <ul>
+    <li>
+      <i class="fa fa-filter left" aria-hidden="true"></i>
+      <div class="right delete"><i class="fa fa-times" aria-hidden="true"></i></div>
+      <span class="selected-item-title">Lorem ipsum dolor sit amet consectetur adipiscing elit</span>
+    </li>
+    <li>
+      <i class="fa fa-filter left" aria-hidden="true"></i>
+      <div class="right delete"><i class="fa fa-times" aria-hidden="true"></i></div>
+      <span class="selected-item-title">Lorem ipsum dolor set amet</span>
+    </li>
+  </ul>
+</div>
+
+<div class="list-object-wrapper">
+  <form action="">
+    <ul *ngFor="let item of dataService.elementsFiltered$ | async">
+      <li><input id="{{ item.Id }}" type="checkbox" name="item" value="{{ item.Caption }}" /><label for="{{ item.Id }}"><i class="fa fa-filter" aria-hidden="true"></i>{{ item.Caption }}</label></li>
+    </ul>
+  </form>
+</div>
