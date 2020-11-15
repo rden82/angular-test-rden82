@@ -12,25 +12,33 @@
     <i class="fa fa-map-marker" aria-hidden="true"></i>
     <span class="field-box">
       <i class="fa fa-search" aria-hidden="true"></i>
-      <input #searchKeywords (input)="autocomplete(searchKeywords)" type="text" placeholder="Поиск" />
+      <input
+        #searchKeywords
+        (input)="autocomplete(searchKeywords)"
+        type="text"
+        placeholder="Поиск"
+      />
     </span>
-    <button class="reset right" type="reset" (click)="searchReset()"><i class="fa fa-times" aria-hidden="true"></i></button>
+    <button class="reset right" type="reset" (click)="searchReset()">
+      <i class="fa fa-times" aria-hidden="true"></i>
+    </button>
   </form>
 </div>
 
 <div class="selected-block">
   <span class="selected-block__title small">Выбранные объекты:</span>
-  <div class="right upper cancel">Отменить все <i class="fa fa-times" aria-hidden="true"></i></div>
+  <div class="right upper cancel">
+    Отменить все <i class="fa fa-times" aria-hidden="true"></i>
+  </div>
   <ul>
-    <li>
+    <li *ngFor="let item of selectedArray">
       <i class="fa fa-filter left" aria-hidden="true"></i>
-      <div class="right delete"><i class="fa fa-times" aria-hidden="true"></i></div>
-      <span class="selected-item-title">Lorem ipsum dolor sit amet consectetur adipiscing elit</span>
-    </li>
-    <li>
-      <i class="fa fa-filter left" aria-hidden="true"></i>
-      <div class="right delete"><i class="fa fa-times" aria-hidden="true"></i></div>
-      <span class="selected-item-title">Lorem ipsum dolor set amet</span>
+      <div class="right delete" (click)="deleteItem()">
+        <i class="fa fa-times" aria-hidden="true"></i>
+      </div>
+      <span class="selected-item-title"
+        >Lorem ipsum dolor sit amet consectetur adipiscing elit</span
+      >
     </li>
   </ul>
 </div>
@@ -38,7 +46,17 @@
 <div class="list-object-wrapper">
   <form action="">
     <ul *ngFor="let item of dataService.elementsFiltered$ | async">
-      <li><input id="{{ item.Id }}" type="checkbox" name="item" value="{{ item.Caption }}" /><label for="{{ item.Id }}"><i class="fa fa-filter" aria-hidden="true"></i>{{ item.Caption }}</label></li>
+      <li>
+        <input
+          id="{{ item.Id }}"
+          type="checkbox"
+          name="item"
+          value="{{ item.Caption }}"
+        /><label for="{{ item.Id }}"
+          ><i class="fa fa-filter" aria-hidden="true"></i>{{ item.Caption
+          }}</label
+        >
+      </li>
     </ul>
   </form>
 </div>
