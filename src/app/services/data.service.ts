@@ -31,7 +31,9 @@ export class DataService {
     ]).pipe(
       map(([elements, query]) => {
         return query
-          ? elements.filter(element => element.Caption.includes(query))
+          ? elements.filter(element =>
+              element.Caption.toUpperCase().includes(query.toUpperCase())
+            )
           : elements;
       })
     );

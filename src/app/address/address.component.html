@@ -33,7 +33,7 @@
   <ul>
     <li *ngFor="let item of selectedArray">
       <i class="fa fa-filter left" aria-hidden="true"></i>
-      <div class="right delete" (click)="deleteItem()">
+      <div class="right delete" (click)="deleteItem(item)">
         <i class="fa fa-times" aria-hidden="true"></i>
       </div>
       <span class="selected-item-title"
